@@ -50,6 +50,7 @@ class hoffmanNode{
         }
     }
     let nodes=[];
+    console.log(hash);
     for(let [char,freq] of hash)
     {
  
@@ -70,6 +71,8 @@ class hoffmanNode{
         stringCodes+=`${char}:${encode},`;
 
     }
+ 
+    console.log(codes);
     for(let char of data)
     {
         
@@ -79,13 +82,12 @@ class hoffmanNode{
         
     }
     console.log(newData);
-    fs.writeFileSync("codes.txt",stringCodes,"utf-8");
+    let codename=fileName+".codes----";
 
-    fs.writeFileSync("output.txt",newData,"utf-8");
+    fs.writeFileSync(`${codename}`,stringCodes,"utf-8");
+    fs.writeFileSync(`${fileName}`,newData,"utf-8");
 
 }
-main("input.txt");
-
 module.exports={
     main
 }
