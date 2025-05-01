@@ -17,7 +17,7 @@ class hoffmanNode{
         const newNode=new hoffmanNode(null,left.freq+right.freq,null,null);
         newNode.left=left;
         newNode.right=right;
-        console.log('Merging nodes:', left, 'and', right); 
+        
         nodes.splice(0,2);
         nodes.push(newNode);
         nodes.sort((a, b) => a.freq - b.freq);
@@ -58,7 +58,7 @@ class hoffmanNode{
 
     }
     nodes.sort((a, b) => a.freq - b.freq);
-    console.log(nodes);
+   
     let root=treeBuilder(nodes);
     let code="";
     let codes=new Map();
@@ -74,7 +74,7 @@ class hoffmanNode{
     {
         
         let num=codes.get(char);
-        console.log(char,num);
+        
         newData+=num;
         
     }
