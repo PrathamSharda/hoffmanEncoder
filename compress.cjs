@@ -1,7 +1,7 @@
+
 const { Command } = require('commander');
 const fs = require('fs');
 const path = require('path');
-
 const { main } = require("./hoffman.js");
 const { decode } = require("./decode.js");
 
@@ -25,7 +25,7 @@ if (options.compress) {
 
   fs.readdirSync(folderPath).forEach(file => {
 
-    if (!file.startsWith("codes---")) { 
+    if (!file.endsWith(".codes---")) { 
 
       const filePath = path.join(folderPath, file);
       const text=main(filePath);
@@ -43,7 +43,7 @@ if (options.compress) {
 
       const filePath = path.join(folderPath, file);
       const text=decode(filePath);
-      console.log(`${file} is decompressed`);
+     console.log(`${file} is decompressed`);
       
     }else fs.unlinkSync(`${folderPath}/${file}`);
   });

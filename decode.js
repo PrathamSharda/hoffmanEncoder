@@ -39,7 +39,7 @@ for(let i=0;i<data.length;i++)
     }
 }
     fs.writeFileSync(`${fileName}`,finalans,"utf-8");
-console.log(finalans);
+//console.log(finalans);
 
     
 }

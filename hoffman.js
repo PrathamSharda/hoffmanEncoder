@@ -40,7 +40,9 @@ class hoffmanNode{
 
  function main(fileName){
     let hash=new Map();
+
     let data=fs.readFileSync(fileName,"utf-8");
+    
     for (let char of data )
     {
         if (hash.has(char)) {
@@ -50,7 +52,7 @@ class hoffmanNode{
         }
     }
     let nodes=[];
-    console.log(hash);
+    //console.log(hash);
     for(let [char,freq] of hash)
     {
  
@@ -72,7 +74,7 @@ class hoffmanNode{
 
     }
  
-    console.log(codes);
+    //console.log(codes);
     for(let char of data)
     {
         
@@ -81,6 +83,11 @@ class hoffmanNode{
         newData+=num;
         
     }
+    let count=0;
+    for (let char of newData){
+        count++;
+    }
+    console.log(count);
     console.log(newData);
     let codename=fileName+".codes----";
 
