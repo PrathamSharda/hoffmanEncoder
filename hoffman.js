@@ -88,11 +88,21 @@ class hoffmanNode{
         count++;
     }
     console.log(count);
-    console.log(newData);
-    let codename=fileName+".codes----";
+     const paddingBits = 8 - (newData.length % 8);
+     const paddedBits=newData+"0".repeat(paddingBits);
+     
+     const buffer=Buffer.alloc(Math.ceil(paddedBits.length/8));
+     for(let i=0;i<paddedBits.length;i+=8)
+     {
+        const byte=parseInt(paddedBits.substring(i,i+8),2); 
+        buffer[i/8]=byte;
+     }
+    let codename=fileName.replace('.txt', '.txt.codes');
+    let binname=fileName.replace('.txt', '.bin')
 
     fs.writeFileSync(`${codename}`,stringCodes,"utf-8");
-    fs.writeFileSync(`${fileName}`,newData,"utf-8");
+    fs.writeFileSync(`${binname}`,buffer,"utf-8");
+    fs.unlinkSync(`${fileName}`);
 
 }
 module.exports={
