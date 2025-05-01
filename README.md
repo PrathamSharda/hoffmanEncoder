@@ -5,7 +5,7 @@ The **Huffman Encoder** is a lossless data compression algorithm used to reduce 
 ### Table of Contents
 - [Introduction](#introduction)
 - [Algorithm Explanation](#algorithm-explanation)
-- [Installation & usage](#installation)
+- [Installation](#installation)
 
 
 
@@ -36,7 +36,7 @@ The Huffman Encoding algorithm compresses text data by creating a binary tree ba
 
 ---
 
-## Installation & usage
+## Installation
 
 ### Prerequisites
 Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your system.
