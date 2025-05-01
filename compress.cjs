@@ -25,7 +25,8 @@ if (options.compress) {
 
   fs.readdirSync(folderPath).forEach(file => {
 
-    if (!file.endsWith(".codes---")) { 
+    
+    if (!file.endsWith(".codes")) { 
 
       const filePath = path.join(folderPath, file);
       const text=main(filePath);
@@ -39,7 +40,10 @@ if (options.compress) {
 
   fs.readdirSync(folderPath).forEach(file => {
 
-    if (!file.endsWith(".codes----")) { 
+    if(file.endsWith(".txt")){
+      throw "cannot decompress this file as this is not compressed";
+    }
+    else if (!file.endsWith(".codes")) { 
 
       const filePath = path.join(folderPath, file);
       const text=decode(filePath);
