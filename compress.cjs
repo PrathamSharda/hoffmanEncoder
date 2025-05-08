@@ -26,12 +26,17 @@ if (options.compress) {
   fs.readdirSync(folderPath).forEach(file => {
 
     
-    if (!file.endsWith(".codes")) { 
-
+    if (file.endsWith('.txt')) { 
+      async function compressor(){
       const filePath = path.join(folderPath, file);
-      const text=main(filePath);
+      const text=await main(filePath);
+      //fs.unlinkSync(`${folderPath}/${file}`);
       console.log(`${file} is compressed`);
-
+      fs.unlinkSync(`${folderPath}/${file}`);
+      }
+      compressor();
+    }else{
+      fs.unlinkSync(`${folderPath}/${file}`);
     }
   });
 } else if (options.decompress) {
@@ -39,16 +44,19 @@ if (options.compress) {
   const folderPath = options.decompress; 
 
   fs.readdirSync(folderPath).forEach(file => {
-
+    async function decompress()
+    {
     if(file.endsWith(".txt")){
       throw "cannot decompress this file as this is not compressed";
     }
     else if (!file.endsWith(".codes")) { 
 
       const filePath = path.join(folderPath, file);
-      const text=decode(filePath);
-     console.log(`${file} is decompressed`);
+      const text=await decode(filePath);
+     fs.unlinkSync(`${folderPath}/${file}`)
       
     }else fs.unlinkSync(`${folderPath}/${file}`);
+  }
+  decompress();
   });
 }
